@@ -49,6 +49,8 @@ flags.DEFINE_string('jackhmmer_binary_path', '/usr/bin/jackhmmer',
                     'Path to the JackHMMER executable.')
 flags.DEFINE_string('hhblits_binary_path', '/usr/bin/hhblits',
                     'Path to the HHblits executable.')
+flags.DEFINE_string('hhblits_M_arg', 'first',
+                    'HHblits -M argument.')                  
 flags.DEFINE_string('hhsearch_binary_path', '/usr/bin/hhsearch',
                     'Path to the HHsearch executable.')
 flags.DEFINE_string('kalign_binary_path', '/usr/bin/kalign',
@@ -245,6 +247,7 @@ def main(argv):
   data_pipeline = pipeline.DataPipeline(
       jackhmmer_binary_path=FLAGS.jackhmmer_binary_path,
       hhblits_binary_path=FLAGS.hhblits_binary_path,
+      hhblits_M_arg=FLAGS.hhblits_M_arg,
       hhsearch_binary_path=FLAGS.hhsearch_binary_path,
       uniref90_database_path=FLAGS.uniref90_database_path,
       mgnify_database_path=FLAGS.mgnify_database_path,

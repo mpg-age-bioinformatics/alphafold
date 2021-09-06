@@ -34,6 +34,7 @@ class HHBlits:
   def __init__(self,
                *,
                binary_path: str,
+               M_arg: str,
                databases: Sequence[str],
                n_cpu: int = 4,
                n_iter: int = 3,
@@ -75,6 +76,7 @@ class HHBlits:
       RuntimeError: If HHblits binary not found within the path.
     """
     self.binary_path = binary_path
+    self.M_arg= M_arg
     self.databases = databases
 
     for database_path in self.databases:
@@ -123,6 +125,8 @@ class HHBlits:
         cmd += ['-p', str(self.p)]
       if self.z != _HHBLITS_DEFAULT_Z:
         cmd += ['-Z', str(self.z)]
+      if self.M_arg == "first":
+        cmd += ['-M', str(self.M_arg)]
       cmd += db_cmd
 
       logging.info('Launching subprocess "%s"', ' '.join(cmd))

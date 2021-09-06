@@ -84,6 +84,7 @@ class DataPipeline:
   def __init__(self,
                jackhmmer_binary_path: str,
                hhblits_binary_path: str,
+               hhblits_M_arg: str,
                hhsearch_binary_path: str,
                uniref90_database_path: str,
                mgnify_database_path: str,
@@ -107,6 +108,7 @@ class DataPipeline:
     else:
       self.hhblits_bfd_uniclust_runner = hhblits.HHBlits(
           binary_path=hhblits_binary_path,
+          M_arg=hhblits_M_arg,
           databases=[bfd_database_path, uniclust30_database_path])
     self.jackhmmer_mgnify_runner = jackhmmer.Jackhmmer(
         binary_path=jackhmmer_binary_path,
